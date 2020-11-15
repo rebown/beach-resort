@@ -35,11 +35,11 @@ export const Services = () => {
             <Title title={'Featured Rooms'} />
             <div className="services-center">
                 {services.map((item, key) => {
-                    return <aticle key={key} className="service">
+                    return <article key={key} className="service">
                         <span>{item.icon}</span>
                         <h6>{item.title}</h6>
                     <p>{item.info}</p>
-                    </aticle>
+                    </article>
                 })}
             </div>
         </section>

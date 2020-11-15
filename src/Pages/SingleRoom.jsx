@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Hero } from '../components/Hero'
 import { Banner } from '../components/Banner'
-import { Title } from '../components/Title'
 import { RoomContext } from '../context'
-import defaultImg from '../images/room-1.jpeg'
 import StyledHero from '../components/StyledHero'
 
 export class SingleRoom extends Component {

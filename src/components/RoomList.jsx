@@ -18,7 +18,7 @@ export default function RoomList({ rooms }) {
                     {rooms.map(room => {
                             return (
                                 <CSSTransition
-                                    in={room.id.length != 0}
+                                    in={room.id.length !== 0}
                                     timeout={300}
                                     unmountOnExit
                                     classNames="room"
