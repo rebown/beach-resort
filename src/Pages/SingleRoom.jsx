@@ -36,7 +36,7 @@ export class SingleRoom extends Component {
         const [mainImg, ...otherImages] = images;
         return (
            <>
-            <StyledHero img={mainImg}>
+            <StyledHero className="hero" img={mainImg}>
                 <Banner title={`${name} room`}>
                     <Link to="/rooms" className="btn-primary">
                         Back to rooms

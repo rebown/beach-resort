@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Hero = ({ hero, children }) => {
     return (
-      <header className={hero}>
+      <header className={"hero " + hero}>
            {children}
       </header>
     )

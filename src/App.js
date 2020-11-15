@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { CSSTransition } from 'react-transition-group';
 
 import { Home } from './Pages/Home';
 import { Rooms } from './Pages/Rooms';
@@ -8,19 +9,44 @@ import { Error } from './Pages/Error';
 
 import { Navbar } from "./components/Navbar";
 
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
 
 function App() {
   return (
-    <>
+    <div className="container">
     <Navbar />
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/rooms" exact component={Rooms} />
+        <Route path="/" key="/" exact >
+        {({ match }) => (
+          <CSSTransition
+          in={match != null}
+            timeout={300}
+            classNames="page"
+            unmountOnExit
+          >
+           <div className="page">
+          <Home />
+           </div>
+          </CSSTransition>
+          )}
+          </Route>
+        <Route path="/rooms" key="/rooms" exact>
+          {({ match }) => (
+          <CSSTransition
+          in={match != null}
+            timeout={300}
+            classNames="page"
+            unmountOnExit
+          >
+         
+           <div className="page">
+              <Rooms />
+            </div>
+          </CSSTransition>
+          )}
+        </Route>
         <Route path="/rooms/:id" exact component={SingleRoom} />
-        <Route component={Error} />
-      </Switch>
-    </>
+        {/* <Route component={Error} /> */}
+    </div>
   );
 }
 

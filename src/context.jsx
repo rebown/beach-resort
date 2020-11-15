@@ -1,7 +1,6 @@
 import React from 'react'
 import Client from './Contentful';
 
-
 const RoomContext = React.createContext();
 
 class RoomProvider extends React.Component {
@@ -21,6 +20,7 @@ class RoomProvider extends React.Component {
         pets: false
     };
 
+    //function get data from contentful
     getData() {
         Client.getEntries()
             .then((response) =>{
@@ -42,10 +42,12 @@ class RoomProvider extends React.Component {
             .catch(console.error)
     }
 
+    //get data
     componentDidMount() {
         this.getData();
     }
 
+    //format incoming data
     formatData(items) {
         let tempItems = items.map(item => {
             let id = item.sys.id;
@@ -58,6 +60,7 @@ class RoomProvider extends React.Component {
         return tempItems;
     }
 
+    //get room
     getRoom = slug => {
         let tempRooms = [...this.state.rooms];
         const room = tempRooms.find(room => room.slug === slug);
@@ -101,7 +104,6 @@ class RoomProvider extends React.Component {
         if(breakfast) {
             tempRooms = tempRooms.filter(room => room.breakfast === true)
         }
-        debugger
         if(pets) {
             tempRooms = tempRooms.filter(room => room.pets === true)
         }

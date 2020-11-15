@@ -1,5 +1,6 @@
 import React from 'react'
 import { Room } from './Room'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 export default function RoomList({ rooms }) {
     if(rooms.length === 0) {
@@ -11,14 +12,24 @@ export default function RoomList({ rooms }) {
     }
 
     return (
+        <TransitionGroup>
         <section className="roomslist">
             <div className="roomslist-center">
-                {
-                    rooms.map(room => {
-                        return <Room key={room.id} room={room} />
-                    })
-                }
+                    {rooms.map(room => {
+                            return (
+                                <CSSTransition
+                                    in={room.id.length != 0}
+                                    timeout={300}
+                                    unmountOnExit
+                                    classNames="room"
+                                    key={room.id}
+                                >
+                                    <Room key={room.id} room={room} />
+                                </CSSTransition>
+                            )
+                        })}
             </div>
         </section>
+        </TransitionGroup>
     )
 }
